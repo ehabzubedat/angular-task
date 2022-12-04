@@ -1,0 +1,77 @@
+<div class="table-responsive-sm">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-outline-success mb-2" data-bs-toggle="modal" data-bs-target="#createCustomerModal">
+        Create New Customer
+    </button>
+
+    <!-- Create New Customer Modal -->
+    <div class="modal fade" id="createCustomerModal" tabindex="-1" aria-labelledby="createCustomerModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="createCustomerModal">Create New Customer</h1>
+                </div>
+                <form [formGroup]="customerForm" (ngSubmit)="createCustomer()">
+                    <div class="modal-body">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Full Name" formControlName="name">
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Occupation" formControlName="occupation">
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" placeholder="Phone" formControlName="phone">
+                        </div>
+                        <div class="input-group mb-3">
+                            <input type="email" class="form-control" placeholder="Email" formControlName="email">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="btn-close" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Customer Table -->
+    <table class="table table-responsive-md">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Occupation</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Email</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngIf="isBusy">
+            <td colspan="6" class="text-center p-4">
+                <div class="spinner-border text-dark" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </td>
+        </tr>
+        <tr *ngFor="let customer of customers; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ customer.name }}</td>
+            <td>{{ customer.occupation }}</td>
+            <td>{{ customer.phone }}</td>
+            <td>{{ customer.email }}</td>
+            <td>
+                <swal #deleteSwal title="Delete {{ customer.name }}?" text="Are You Sure?" icon="question"
+                    cancelButtonText="No" [showCancelButton]="true" [focusCancel]="true"
+                    (confirm)="deleteCustomer(customer._id, i)" confirmButtonText="Yes" customClass="swal-delete">
+                </swal>
+                <button class="btn btn-danger m-1" [swal]="deleteSwal">
+                    <fa-icon [icon]="faTrash"></fa-icon>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <!-- ./Customer Table -->
+</div>

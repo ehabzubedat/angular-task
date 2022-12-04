@@ -1,0 +1,20 @@
+
+<div class="row d-flex justify-content-center">
+    <div class="col-md-4 text-center">
+        <h3 class="p-3 rounded">Create New Task</h3>
+        <form [formGroup]="taskForm" (ngSubmit)="createTask()">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="description" formControlName="description">
+            </div>
+            <div class="input-group mb-3">
+                <select class="form-control form-select" ControlName="customer"  (change)="changeCustomer($event)">
+                    <option value="" selected> -- Select Customer -- </option>
+                    <option *ngFor="let customer of customers" value="{{customer._id}}">{{customer.name}}</option>
+                </select>
+            </div>
+            <div class="input-group mb-3">
+                <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

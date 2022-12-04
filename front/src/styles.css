@@ -1,0 +1,63 @@
+html {
+  width: auto;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.table > thead {
+  background-color: #000;
+  color: #fff;
+}
+
+.spinner-border {
+  width: 10rem;
+  height: 10rem;
+}
+
+.swal2-container>.swal-delete,
+.modal-dialog>.modal-content ,
+h3 {
+  color: #fff;
+  background-color: #000;
+}
+
+.swal-delete>.swal2-icon.swal2-question {
+  border-color: #fff;
+  color: #fff;
+}
+
+.swal-delete>.swal2-actions>.swal2-styled:focus {
+  box-shadow: none;
+  outline: 0;
+}
+
+.swal-delete>.swal2-actions>.swal2-styled.swal2-confirm {
+  background-color: #fb4143;
+}
+
+.swal-delete>.swal2-actions>.swal2-styled.swal2-cancel {
+  background-color: #fff;
+  color: #000;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+  outline: 0px;
+  box-shadow: none;
+  border: 1px solid #fb4143;
+}
+
+input[type="text"],
+input[type="email"],
+.form-select {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+input[type="text"]::placeholder,
+input[type="email"]::placeholder {
+  color: #fff !important;
+}

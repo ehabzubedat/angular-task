@@ -1,0 +1,36 @@
+<div class="table-responsive-sm">
+    <!-- Tasks Table -->
+    <table class="table table-responsive-md">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Customer</th>
+            <th scope="col">Title</th>
+            <th scope="col">Created At</th>
+            <th scope="col">Is Done?</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngIf="isBusy">
+            <td colspan="5" class="text-center p-4">
+                <div class="spinner-border text-dark" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </td>
+        </tr>
+        <tr *ngFor="let task of tasks; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ task.customer }}</td>
+            <td>{{ task.description }}</td>
+            <td>{{ task.createdAt | date: 'dd/MM/yyyy'}}</td>
+            <td>
+                <fa-icon *ngIf="task.isDone; else notDone" class="text-success ms-4" [icon]="thumbsUp" ></fa-icon>
+                <ng-template #notDone>
+                    <fa-icon class="text-danger ms-4" [icon]="thumbsDown" #notDone></fa-icon>
+                </ng-template>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <!-- ./Customer Table -->
+</div>
